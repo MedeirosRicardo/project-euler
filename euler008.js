@@ -23,7 +23,7 @@
 
 Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?*/
 
-// Project Euler and HackerRank Soluction
+// Project Euler and HackerRank Solution
 function solution(k, num) {
     let max = 0;
     let i = 0;

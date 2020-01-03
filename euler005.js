@@ -5,7 +5,7 @@ What is the smallest positive number that is evenly divisible by all of the numb
 /*Note: LCM: Smallest Multiple is, in other words, the least common multiple of a range of numbers.
 GCD: is the greatest common divisor. Here we can use Euclidean Algorithm.*/
 
-// Project Euler and HackerRank Soluction
+// Project Euler and HackerRank Solution
 function gcd(a, b) {
     while (b != 0) {
         let c = b;

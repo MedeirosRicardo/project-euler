@@ -2,7 +2,7 @@
 
 What is the 10 001st prime number?*/
 
-// Project Euler and HackerRank Soluction
+// Project Euler and HackerRank Solution
 function isPrime(n) {
     if (n % 2 === 0) {
         return (n == 2);
