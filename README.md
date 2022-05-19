@@ -2,7 +2,7 @@
 
 ![HackerRank](https://imgur.com/Hys9574.png)
 
-![Project Euler](https://projecteuler.net/themes/20191019/logo_default.png)
+![Project Euler](https://projecteuler.net/themes/logo_default.png)
 
 **My HackerRank profile can be found here:** [HackerRank/Arninho](https://www.hackerrank.com/arninho)
 
