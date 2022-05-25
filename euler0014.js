@@ -47,4 +47,47 @@ function solution(n) {
   return result;
 }
 
-console.log(solution(1000000));
+// console.log(solution(1000000));
+
+// HackerRank Solution
+function processData(input) {
+  function collatz(n) {
+      let count = 1;
+
+      if (n === 1) {
+          count = 2;
+      }
+
+      while (n > 1) {
+          if (n % 2 === 0) {
+              n = n / 2;
+              count++;
+          } else {
+              n = (3 * n + 1) / 2;
+              count += 2;
+          }
+      }
+      return count;
+  }
+
+  function solution() {
+      let arr = [];
+      let arrSize = 5 * Math.pow(10, 6);
+      let maxCount = 0;
+      let result = 0;
+
+      for (let i = 0; i <= arrSize; i++) {
+          let count = collatz(i);
+          if (count > maxCount || count === maxCount) {
+              maxCount = count;
+              result = i;
+          }
+          arr[i] = result;
+      }
+      let values = input.split("\n");
+      for (let i = 1; i < values.length; i++) {
+          console.log(arr[values[i]]);
+      }
+  }
+  solution();
+}
