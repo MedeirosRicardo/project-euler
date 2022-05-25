@@ -47,9 +47,13 @@ function solution(n) {
   return result;
 }
 
-// console.log(solution(1000000));
+console.log(solution(1000000));
 
 // HackerRank Solution
+/*
+You can skip to next possible odd using (3n + 1)/2 while adding 2 to the counter
+as we want to reach 1 which is an odd number.
+*/
 function processData(input) {
   function collatz(n) {
       let count = 1;
