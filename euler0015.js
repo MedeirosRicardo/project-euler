@@ -24,7 +24,7 @@ function countLatticePaths(k, n) {
 
 console.log(countLatticePaths(20, 20));
 
-// HackerRank Euler Solution
+// HackerRank Solution
 function processData(input) {
   function factorial(n) {
     let answer = BigInt(1);
