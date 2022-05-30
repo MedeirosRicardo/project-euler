@@ -23,3 +23,32 @@ function countLatticePaths(k, n) {
 }
 
 console.log(countLatticePaths(20, 20));
+
+// HackerRank Euler Solution
+function processData(input) {
+  function factorial(n) {
+    let answer = BigInt(1);
+    if (n === 0 || n === 1) {
+      return answer;
+    } else {
+      for (let i = 2; i <= n; i++) {
+        answer = BigInt(answer) * BigInt(i);
+      }
+      return answer;
+    }
+  }
+
+  function countLatticePaths(k, n) {
+    n = k + n;
+    return (factorial(n) / ((factorial(n - k)) * factorial(k)));
+  }
+
+  let values = input.split("\n");
+  for (let i = 1; i < values.length; i++) {
+    let tempNum = values[i].split(" ").map((x) => parseInt(x));
+    let k = tempNum[0];
+    let n = tempNum[1];
+    let answer = countLatticePaths(k, n);
+    console.log(parseInt(answer % BigInt((Math.pow(10, 9) + 7))));
+  }
+}
