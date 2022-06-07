@@ -57,3 +57,35 @@ function maximumTrianglePathSum(triangle) {
   return triangle[0][0];
 }
 console.log(maximumTrianglePathSum(Triangle));
+
+// HackerRank Solution
+function processData(input) {
+
+  function maximumTrianglePathSum(triangle) {
+      for (let i = triangle.length - 1; i > 0; i--) {
+          for (let j = 0; j < triangle[i].length - 1; j++) {
+              triangle[i - 1][j] += Math.max(triangle[i][j] || 0, triangle[i][j + 1] || 0);
+          }
+      }
+      return triangle[0][0];
+  }
+
+  let inputString = input.split('\n');
+  let currentLine = 0;
+
+  function readLine() {
+      return inputString[currentLine++];
+  }
+
+  const t = parseInt(readLine().trim(), 10);
+
+  for (let tItr = 0; tItr < t; tItr++) {
+      const rows = parseInt(readLine().trim(), 10);
+      let triangle = [];
+      for (let i = 0; i < rows; i++) {
+          const number = readLine().replace(/\s+$/g, '').split(' ').map(qTemp => parseInt(qTemp, 10));
+          triangle.push(number);
+      }
+      console.log(maximumTrianglePathSum(triangle));
+  }
+}
