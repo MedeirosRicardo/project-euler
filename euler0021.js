@@ -33,8 +33,40 @@ const amicableNumbersSum = (n) => {
       sum.push(i);
     }
   }
-  console.log(sum);
   return sum.reduce((a, b) => a + b);
 }
 
 console.log(amicableNumbersSum(10000));
+
+// HackerRank Solution
+function processData(input) {
+  const divisorsSum = (n) => {
+    let sum = 0;
+    for (let i = 2; i < Math.sqrt(n); i++) {
+      if (n % i === 0) {
+        if (i === (n / i)) {
+          sum += 1;
+        } else {
+          sum += i + n / i;
+        }
+      }
+    }
+    sum += 1;
+    return sum;
+  }
+
+
+  let amicableNumbers = [];
+  for (let i = 1; i < 100000; i++) {
+    if (i === divisorsSum(divisorsSum(i)) && i !== divisorsSum(i)) {
+      amicableNumbers.push(i);
+    }
+  }
+
+  let values = input.split('\n').map(elem => parseInt(elem));
+
+  for (let i = 1; i < values.length; i++) {
+    let sum = amicableNumbers.filter(a => a < values[i]).reduce((a, b) => a + b, 0);
+    console.log(sum);
+  }
+}
