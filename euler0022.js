@@ -26,3 +26,32 @@ const nameScore = (names) => {
 };
 
 console.log(nameScore(sortedNames));
+
+// HackerRank Solution
+function processData(input) {
+
+  const wordSum = (word) => {
+    return word.split('').map(elem => elem.charCodeAt() - 64).reduce((a, b) => a + b);
+  };
+
+  let inputString = input.split('\n');
+  let currentLine = 0;
+
+  const readLine = () => inputString[currentLine++];
+  const t = Number(readLine().trim());
+  let names = [];
+
+  for (let tItr = 0; tItr < t; tItr++) {
+    names.push(readLine().trim());
+  }
+
+  names.sort((a, b) => a > b ? 1 : -1);
+
+  let q = Number(readLine().trim());
+
+  for (let i = 0; i < q; i++) {
+    let currentName = readLine().toUpperCase();
+    let currentNameIndex = names.indexOf(currentName);
+    console.log(wordSum(currentName) * (currentNameIndex + 1));
+  }
+}
