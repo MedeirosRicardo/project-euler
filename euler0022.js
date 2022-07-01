@@ -19,7 +19,7 @@ const wordSum = (word) => {
 
 const nameScore = (names) => {
   let score = 0;
-  for (let i = 0; i < sortedNames.length; i++) {
+  for (let i = 0; i < names.length; i++) {
     score += wordSum(names[i]) * (i + 1);
   }
   return score;
