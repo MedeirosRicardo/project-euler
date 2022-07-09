@@ -63,6 +63,73 @@ const nonAbundantSum = (num) => {
     }
   }
   return result;
-}
+};
 
 console.log(nonAbundantSum(28123));
+
+// HackerRank Solution
+function processData(input) {
+
+  const properDivisorsSum = (num) => {
+    let result = 0;
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        if (i === (num / i)) {
+          result += i;
+        } else {
+          result += (i + num / i);
+        }
+      }
+    }
+    return result + 1;
+  };
+
+  const isAbundant = (num) => {
+    if (properDivisorsSum(num) > num) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const limit = 28123;
+  let abundantNumbers = [];
+  let abundantSums = [];
+
+  for (let i = 1; i <= limit; i++) {
+    if (isAbundant(i)) {
+      abundantNumbers.push(i);
+    }
+  }
+
+  for (let i = 0; i < abundantNumbers.length; i++) {
+    for (let j = 0; j < abundantNumbers.length; j++) {
+
+      let tempSum = abundantNumbers[i] + abundantNumbers[j];
+
+      if (tempSum <= limit) {
+        abundantSums.push(tempSum);
+      }
+    }
+  }
+
+  let inputString = input.split('\n');
+  let currentLine = 0;
+  const readLine = () => inputString[currentLine++];
+
+  const t = Number(readLine().trim());
+
+  for (let tItr = 0; tItr < t; tItr++) {
+
+    let n = Number(readLine().trim());
+
+    if (n > limit) {
+      console.log('YES');
+    } else if (abundantSums.includes(n)) {
+      console.log('YES');
+    } else {
+      console.log('NO');
+    }
+  }
+}
