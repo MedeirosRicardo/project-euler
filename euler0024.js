@@ -38,35 +38,49 @@ lexicographicPermutations([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 1000000);
 
 // HackerRank Solution
 // Using factorial number system
+function processData(input) {
 
-const factoradic = (num) => {
-  const factoradics = [];
-  let i = 1;
+  const factoradic = (num) => {
+    const factoradics = [];
+    let i = 1;
 
-  while (num !== 0) {
-    factoradics.unshift(Math.floor(num % i));
-    num = Math.floor(num / i);
-    i++;
+    while (num !== 0) {
+      factoradics.unshift(Math.floor(num % i));
+      num = Math.floor(num / i);
+      i++;
+    }
+    return factoradics;
+  };
+
+  const permutations = (str, n) => {
+    let char;
+    let result = [];
+    let facNumber = factoradic(n - 1);
+    let tempString = str.split('');
+
+    while (facNumber.length < str.length) {
+      facNumber.unshift(0);
+    }
+
+    for (let i = 0; i < str.length; i++) {
+      char = tempString.splice(facNumber[i], 1);
+      result.push(char);
+    }
+
+    return result.join('');
+  };
+
+  let str = 'abcdefghijklm';
+  let inputString = input.split('\n');
+  let currentLine = 0;
+  const readLine = () => inputString[currentLine++];
+
+  let t = Number(readLine().trim());
+
+  for (let tItr = 0; tItr < t; tItr++) {
+
+    let n = Number(readLine().trim());
+
+    console.log(permutations(str, n));
   }
-  return factoradics;
-};
-
-const permutations = (str, n) => {
-  let char;
-  let result = [];
-  let facNumber = factoradic(n - 1);
-  let tempString = str.split('');
-
-  while (facNumber.length < str.length) {
-    facNumber.unshift(0);
-  }
-
-  for (let i = 0; i < str.length; i++) {
-    char = tempString.splice(facNumber[i], 1);
-    result.push(char);
-  }
-
-  return result.join('');
-};
-
-console.log(permutations('0123456789', 1000000));
+}
